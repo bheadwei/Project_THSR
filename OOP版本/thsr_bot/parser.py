@@ -1,10 +1,13 @@
+
 class BookingInfoParser:
     def __init__(self, driver):
         self.driver = driver
 
     def parse_info(self):
+        order_info = self.driver.find_element("css selector", "p.pnr-code")
         info_card = self.driver.find_element("css selector", "div.ticket-card")
         return {
+            "訂單編號|order number":order_info.find_element("css selector", "span").text.strip(),
             "去/回程|direction": info_card.find_element("css selector", "span.direction").text.strip(),
             "出發日期|date": info_card.find_element("css selector", "span.date").text.strip(),
             "車次號碼|train_no": info_card.find_element("css selector", "p.train-no").text.strip(),

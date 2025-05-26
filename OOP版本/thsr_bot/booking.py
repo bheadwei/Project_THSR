@@ -6,6 +6,8 @@ from selenium.webdriver.support.ui import Select
 from .browser import create_browser
 from .ocr import CaptchaSolver
 from .parser import BookingInfoParser
+import json
+import os
 
 class THSRBot:
     def __init__(self):
@@ -18,9 +20,7 @@ class THSRBot:
 
     def open_website(self):
         self.driver.get("https://www.thsrc.com.tw/")
-        self.human_like_pause()
         self.ac.move_to_element(self.driver.find_element(By.CSS_SELECTOR, 'button.swal2-confirm')).click().perform()
-        self.human_like_pause()
         self.ac.move_to_element(self.driver.find_element(By.CSS_SELECTOR, 'a#a_irs')).click().perform()
 
     def into_order_page(self):
@@ -30,17 +30,19 @@ class THSRBot:
     def fill_info(self):
         Select(self.driver.find_element(By.ID, "select_location01")).select_by_value("1")
         Select(self.driver.find_element(By.ID, "select_location02")).select_by_value("12")
-        date_input = self.driver.find_element(By.ID, "Departdate02")
-        date_input.send_keys(Keys.CONTROL, 'a', '2025/06/01')
-        time_input = self.driver.find_element(By.ID, "toPortalTimeTable")
-        time_input.send_keys(Keys.CONTROL, 'a', '18:00')
+        self.driver.execute_script("document.getElementById('Departdate02').value = '2025/06/05';")
+        self.human_like_pause()
+        self.driver.execute_script("document.getElementById('toPortalTimeTable').value = '18:00';")
+        self.human_like_pause()
+        
 
     def input_captcha(self):
-        img = self.driver.find_element(By.ID, "BookingS1Form_homeCaptcha_passCode").screenshot_as_png
+        img = self.driver.find_element(By.CSS_SELECTOR, "img#BookingS1Form_homeCaptcha_passCode").screenshot_as_png
         code = self.ocr.solve(img)
-        input_field = self.driver.find_element(By.ID, "securityCode")
+        input_field = self.driver.find_element(By.CSS_SELECTOR, "input#securityCode")
         input_field.clear()
         input_field.send_keys(code)
+        
 
     def submit_search(self):
         self.ac.move_to_element(self.driver.find_element(By.ID, "SubmitButton")).click().perform()
@@ -51,8 +53,9 @@ class THSRBot:
         self.ac.move_to_element(self.driver.find_element(By.NAME, "SubmitButton")).click().perform()
 
     def fill_passenger_info(self):
-        self.driver.find_element(By.ID, "idNumber").send_keys("F129878220")
+        self.driver.find_element(By.ID, "idNumber").send_keys("A100000001")
         self.ac.move_to_element(self.driver.find_element(By.NAME, "agree")).click().perform()
+        self.human_like_pause()
         self.ac.move_to_element(self.driver.find_element(By.ID, "isSubmit")).click().perform()
 
     def print_booking_info(self):
@@ -61,7 +64,13 @@ class THSRBot:
         print("===== 訂票成功 =====")
         for key, val in info.items():
             print(f"{key} : {val}")
-
+        orderID = info.get("訂單編號|order number", "unknown")
+        orderfolder = "orderfolder"
+        if not os.path.exists(orderfolder):
+            os.makedirs(orderfolder)
+        filename = os.path.join(orderfolder, f"訂單編號-{orderID}.json")
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(info, f, ensure_ascii=False, indent=4)
     def run(self):
         try:
             self.open_website()
