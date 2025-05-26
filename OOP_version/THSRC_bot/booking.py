@@ -1,7 +1,6 @@
 import random, time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from .browser import create_browser
 from .ocr import CaptchaSolver
@@ -9,7 +8,7 @@ from .parser import BookingInfoParser
 import json
 import os
 
-class THSRBot:
+class THSRCBot:
     def __init__(self):
         self.driver = create_browser()
         self.ac = ActionChains(self.driver)
@@ -31,9 +30,9 @@ class THSRBot:
         Select(self.driver.find_element(By.ID, "select_location01")).select_by_value("1")
         Select(self.driver.find_element(By.ID, "select_location02")).select_by_value("12")
         self.driver.execute_script("document.getElementById('Departdate02').value = '2025/06/05';")
-        self.human_like_pause()
+        # self.human_like_pause()
         self.driver.execute_script("document.getElementById('toPortalTimeTable').value = '18:00';")
-        self.human_like_pause()
+        # self.human_like_pause()
         
 
     def input_captcha(self):
@@ -49,13 +48,13 @@ class THSRBot:
 
     def confirm_time(self):
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        self.human_like_pause()
+        # self.human_like_pause()
         self.ac.move_to_element(self.driver.find_element(By.NAME, "SubmitButton")).click().perform()
 
     def fill_passenger_info(self):
         self.driver.find_element(By.ID, "idNumber").send_keys("A100000001")
         self.ac.move_to_element(self.driver.find_element(By.NAME, "agree")).click().perform()
-        self.human_like_pause()
+        # self.human_like_pause()
         self.ac.move_to_element(self.driver.find_element(By.ID, "isSubmit")).click().perform()
 
     def print_booking_info(self):
@@ -72,17 +71,15 @@ class THSRBot:
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(info, f, ensure_ascii=False, indent=4)
     def run(self):
-        try:
-            self.open_website()
-            self.into_order_page()
-            self.fill_info()
-            self.input_captcha()
-            self.submit_search()
-            self.confirm_time()
-            self.fill_passenger_info()
-            self.print_booking_info()
-        except Exception as e:
-            raise RuntimeError(f"訂票失敗: {str(e)}")
+        self.open_website()
+        self.into_order_page()
+        self.fill_info()
+        self.input_captcha()
+        self.submit_search()
+        self.confirm_time()
+        self.fill_passenger_info()
+        self.print_booking_info()
+        
 
     def quit(self):
         self.driver.quit()
