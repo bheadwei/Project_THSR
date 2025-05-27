@@ -1,65 +1,16 @@
 ¿ù»~µo¥Í¡A­«·s°õ¦æ!
-¿ù»~°T®§: Message: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=136.0.7103.114)
-Stacktrace:
-	GetHandleVerifier [0x00007FF7373ECF45+75717]
-	GetHandleVerifier [0x00007FF7373ECFA0+75808]
-	(No symbol) [0x00007FF7371B8F9A]
-	(No symbol) [0x00007FF737191B41]
-	(No symbol) [0x00007FF73723EC2E]
-	(No symbol) [0x00007FF73725ECC2]
-	(No symbol) [0x00007FF737237153]
-	(No symbol) [0x00007FF737200421]
-	(No symbol) [0x00007FF7372011B3]
-	GetHandleVerifier [0x00007FF7376ED71D+3223453]
-	GetHandleVerifier [0x00007FF7376E7CC2+3200322]
-	GetHandleVerifier [0x00007FF737705AF3+3322739]
-	GetHandleVerifier [0x00007FF737406A1A+180890]
-	GetHandleVerifier [0x00007FF73740E11F+211359]
-	GetHandleVerifier [0x00007FF7373F5294+109332]
-	GetHandleVerifier [0x00007FF7373F5442+109762]
-	GetHandleVerifier [0x00007FF7373DBA59+4825]
-	BaseThreadInitThunk [0x00007FFFE4587374+20]
-	RtlUserThreadStart [0x00007FFFE4D3CC91+33]
-
+¿ù»~°T®§: move_to requires a WebElement
 ¿ù»~°ïÅ|«H®§:
 Traceback (most recent call last):
-  File "c:\Users\student\project_THSRC\OOP_version\main.py", line 15, in <module>
+  File "c:\Users\«aÞ³\project_THSRC\OOP_version\main.py", line 15, in <module>
     bot.run()
-  File "c:\Users\student\project_THSRC\OOP_version\THSRC_bot\booking.py", line 89, in run
-    self.open_website()
-  File "c:\Users\student\project_THSRC\OOP_version\THSRC_bot\booking.py", line 34, in open_website
-    self.ac.move_to_element(self.driver.find_element(By.CSS_SELECTOR, 'a#a_irs')).click().perform()
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\student\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 917, in find_element
-    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\student\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 448, in execute
-    self.error_handler.check_response(response)
-  File "C:\Users\student\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=136.0.7103.114)
-Stacktrace:
-	GetHandleVerifier [0x00007FF7373ECF45+75717]
-	GetHandleVerifier [0x00007FF7373ECFA0+75808]
-	(No symbol) [0x00007FF7371B8F9A]
-	(No symbol) [0x00007FF737191B41]
-	(No symbol) [0x00007FF73723EC2E]
-	(No symbol) [0x00007FF73725ECC2]
-	(No symbol) [0x00007FF737237153]
-	(No symbol) [0x00007FF737200421]
-	(No symbol) [0x00007FF7372011B3]
-	GetHandleVerifier [0x00007FF7376ED71D+3223453]
-	GetHandleVerifier [0x00007FF7376E7CC2+3200322]
-	GetHandleVerifier [0x00007FF737705AF3+3322739]
-	GetHandleVerifier [0x00007FF737406A1A+180890]
-	GetHandleVerifier [0x00007FF73740E11F+211359]
-	GetHandleVerifier [0x00007FF7373F5294+109332]
-	GetHandleVerifier [0x00007FF7373F5442+109762]
-	GetHandleVerifier [0x00007FF7373DBA59+4825]
-	BaseThreadInitThunk [0x00007FFFE4587374+20]
-	RtlUserThreadStart [0x00007FFFE4D3CC91+33]
-
+  File "c:\Users\«aÞ³\project_THSRC\OOP_version\THSRC_bot\booking.py", line 94, in run
+    self.confirm_time()
+  File "c:\Users\«aÞ³\project_THSRC\OOP_version\THSRC_bot\booking.py", line 65, in confirm_time
+    self.ac.move_to_element(self.driver.find_element(By.CSS_SELECTOR, "input[name=SubmitButton]")).click().perform()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\«aÞ³\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\common\action_chains.py", line 253, in move_to_element
+    self.w3c_actions.pointer_action.move_to(to_element)
+  File "C:\Users\«aÞ³\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\common\actions\pointer_actions.py", line 88, in move_to
+    raise AttributeError("move_to requires a WebElement")
+AttributeError: move_to requires a WebElement
