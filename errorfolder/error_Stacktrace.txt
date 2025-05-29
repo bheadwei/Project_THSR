@@ -1,16 +1,65 @@
 ¿ù»~µo¥Í¡A­«·s°õ¦æ!
-¿ù»~°T®§: move_to requires a WebElement
+¿ù»~°T®§: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=136.0.7103.115)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6827ACF45+75717]
+	GetHandleVerifier [0x00007FF6827ACFA0+75808]
+	(No symbol) [0x00007FF682578F9A]
+	(No symbol) [0x00007FF682564E35]
+	(No symbol) [0x00007FF682589DB4]
+	(No symbol) [0x00007FF6825FEE75]
+	(No symbol) [0x00007FF68261ECC2]
+	(No symbol) [0x00007FF6825F7153]
+	(No symbol) [0x00007FF6825C0421]
+	(No symbol) [0x00007FF6825C11B3]
+	GetHandleVerifier [0x00007FF682AAD71D+3223453]
+	GetHandleVerifier [0x00007FF682AA7CC2+3200322]
+	GetHandleVerifier [0x00007FF682AC5AF3+3322739]
+	GetHandleVerifier [0x00007FF6827C6A1A+180890]
+	GetHandleVerifier [0x00007FF6827CE11F+211359]
+	GetHandleVerifier [0x00007FF6827B5294+109332]
+	GetHandleVerifier [0x00007FF6827B5442+109762]
+	GetHandleVerifier [0x00007FF68279BA59+4825]
+	BaseThreadInitThunk [0x00007FFB9F197374+20]
+	RtlUserThreadStart [0x00007FFB9F6BCC91+33]
+
 ¿ù»~°ïÅ|«H®§:
 Traceback (most recent call last):
   File "c:\Users\«aÞ³\project_THSRC\OOP_version\main.py", line 15, in <module>
     bot.run()
-  File "c:\Users\«aÞ³\project_THSRC\OOP_version\THSRC_bot\booking.py", line 94, in run
-    self.confirm_time()
-  File "c:\Users\«aÞ³\project_THSRC\OOP_version\THSRC_bot\booking.py", line 65, in confirm_time
-    self.ac.move_to_element(self.driver.find_element(By.CSS_SELECTOR, "input[name=SubmitButton]")).click().perform()
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\«aÞ³\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\common\action_chains.py", line 253, in move_to_element
-    self.w3c_actions.pointer_action.move_to(to_element)
-  File "C:\Users\«aÞ³\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\common\actions\pointer_actions.py", line 88, in move_to
-    raise AttributeError("move_to requires a WebElement")
-AttributeError: move_to requires a WebElement
+  File "c:\Users\«aÞ³\project_THSRC\OOP_version\THSRC_bot\booking.py", line 89, in run
+    self.open_website()
+  File "c:\Users\«aÞ³\project_THSRC\OOP_version\THSRC_bot\booking.py", line 32, in open_website
+    self.driver.get("https://www.thsrc.com.tw/")
+  File "C:\Users\«aÞ³\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 473, in get
+    self.execute(Command.GET, {"url": url})
+  File "C:\Users\«aÞ³\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 448, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\«aÞ³\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=136.0.7103.115)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6827ACF45+75717]
+	GetHandleVerifier [0x00007FF6827ACFA0+75808]
+	(No symbol) [0x00007FF682578F9A]
+	(No symbol) [0x00007FF682564E35]
+	(No symbol) [0x00007FF682589DB4]
+	(No symbol) [0x00007FF6825FEE75]
+	(No symbol) [0x00007FF68261ECC2]
+	(No symbol) [0x00007FF6825F7153]
+	(No symbol) [0x00007FF6825C0421]
+	(No symbol) [0x00007FF6825C11B3]
+	GetHandleVerifier [0x00007FF682AAD71D+3223453]
+	GetHandleVerifier [0x00007FF682AA7CC2+3200322]
+	GetHandleVerifier [0x00007FF682AC5AF3+3322739]
+	GetHandleVerifier [0x00007FF6827C6A1A+180890]
+	GetHandleVerifier [0x00007FF6827CE11F+211359]
+	GetHandleVerifier [0x00007FF6827B5294+109332]
+	GetHandleVerifier [0x00007FF6827B5442+109762]
+	GetHandleVerifier [0x00007FF68279BA59+4825]
+	BaseThreadInitThunk [0x00007FFB9F197374+20]
+	RtlUserThreadStart [0x00007FFB9F6BCC91+33]
+

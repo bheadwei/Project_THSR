@@ -17,12 +17,12 @@ class PassengerInfoForm:
         frame = tb.Frame(self.root, padding=20)
         frame.pack(expand=True, fill="both")
 
-        self.create_label_input(frame, "出發日期： (YYYY/MM/DD)", "date_entry")
-        self.create_label_input(frame, "出發時間： (HH:MM)", "time_entry")
-        self.create_label_combobox(frame, "出發站：", "start_var", default="台北")
-        self.create_label_combobox(frame, "抵達站：", "arrive_var", default="左營")
-        self.create_label_input(frame, "張數：", "amount_entry")
-        self.create_label_input(frame, "身分證字號：", "id_entry")
+        self.create_label_input(frame, "出發日期*： (YYYY/MM/DD)", "date_entry")
+        self.create_label_input(frame, "出發時間*： (HH:MM)", "time_entry")
+        self.create_label_combobox(frame, "出發站*：", "start_var", default="台北")
+        self.create_label_combobox(frame, "抵達站*：", "arrive_var", default="左營")
+        self.create_label_input(frame, "張數*：", "amount_entry")
+        self.create_label_input(frame, "身分證字號*：", "id_entry")
         self.create_label_input(frame, "電子郵件：", "email_entry")
 
         # 送出按鈕
@@ -56,7 +56,7 @@ class PassengerInfoForm:
         start_station = self.stations.get(self.start_var.get())
         arrive_station = self.stations.get(self.arrive_var.get())
 
-        if not all([date, time, id_number, email]):
+        if not all([date, time, id_number]):
             messagebox.showwarning("欄位未填", "請填寫所有欄位！")
             return
 
