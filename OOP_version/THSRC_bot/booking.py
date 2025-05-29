@@ -1,5 +1,4 @@
 import random, time
-from .gui import PassengerInfoForm
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select
@@ -8,26 +7,27 @@ from .ocr import CaptchaSolver
 from .parser import BookingInfoParser
 import json
 import os
+from datetime import datetime
 
 class THSRCBot:
-    def __init__(self):
+    def __init__(self,user_data):
         self.driver = create_browser()
         self.ac = ActionChains(self.driver)
         self.ocr = CaptchaSolver()
+        
+        self.date = user_data["date"]
+        self.time = user_data["time"]
+        self.amount = user_data["amount"]
+        self.id_number = user_data["id_number"]
+        self.email = user_data["email"]
+        self.start_station = user_data["start_station"]
+        self.arrive_station = user_data["arrive_station"]
 
     def human_like_pause(self, min_sec=0.8, max_sec=2.5):
         time.sleep(random.uniform(min_sec, max_sec))
     
-    def get_user_input(self):
-        form = PassengerInfoForm()
-        if form.result:
-            self.date = form.result["date"]
-            self.time = form.result["time"]
-            self.amount = form.result["amount"]
-            self.id_number = form.result["id_number"]
-            self.email = form.result["email"]
-            self.start_station = form.result["start_station"]
-            self.arrive_station = form.result["arrive_station"]
+    
+        
     def open_website(self):
         self.driver.get("https://www.thsrc.com.tw/")
         self.ac.move_to_element(self.driver.find_element(By.CSS_SELECTOR, 'button.swal2-confirm')).click().perform()
@@ -72,20 +72,22 @@ class THSRCBot:
         self.ac.move_to_element(self.driver.find_element(By.CSS_SELECTOR, "input#isSubmit")).click().perform()
 
     def print_booking_info(self):
+        # self.human_like_pause()
         parser = BookingInfoParser(self.driver)
         info = parser.parse_info()
         print("===== 訂票成功 =====")
         for key, value in info.items():
             print(f"{key} : {value}")
         orderID = info.get("訂單編號|order number", "unknown")
-        orderfolder = "orderfolder"
+        orderfolder = "orderFolder"
+        TimeTag = datetime.now().strftime("%Y%m%d_%H%M%S")
         if not os.path.exists(orderfolder):
             os.makedirs(orderfolder)
-        filename = os.path.join(orderfolder, f"訂單編號-{orderID}.json")
+        filename = os.path.join(orderfolder, f"訂單編號-{orderID}_{TimeTag}.json")
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(info, f, ensure_ascii=False, indent=4)
     def run(self):
-        self.get_user_input()
+        
         self.open_website()
         self.into_order_page()
         self.fill_info()

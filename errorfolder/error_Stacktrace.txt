@@ -1,15 +1,15 @@
 ¿ù»~µo¥Í¡A­«·s°õ¦æ!
-¿ù»~°T®§: Message: invalid session id: session deleted as the browser has closed the connection
-from disconnected: not connected to DevTools
-  (Session info: chrome=136.0.7103.115)
+¿ù»~°T®§: Message: no such element: Unable to locate element: {"method":"css selector","selector":"input#idNumber"}
+  (Session info: chrome=136.0.7103.115); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Stacktrace:
 	GetHandleVerifier [0x00007FF6827ACF45+75717]
 	GetHandleVerifier [0x00007FF6827ACFA0+75808]
 	(No symbol) [0x00007FF682578F9A]
-	(No symbol) [0x00007FF682564E35]
-	(No symbol) [0x00007FF682589DB4]
-	(No symbol) [0x00007FF6825FEE75]
-	(No symbol) [0x00007FF68261ECC2]
+	(No symbol) [0x00007FF6825CF4C6]
+	(No symbol) [0x00007FF6825CF77C]
+	(No symbol) [0x00007FF682622577]
+	(No symbol) [0x00007FF6825F73BF]
+	(No symbol) [0x00007FF68261F39C]
 	(No symbol) [0x00007FF6825F7153]
 	(No symbol) [0x00007FF6825C0421]
 	(No symbol) [0x00007FF6825C11B3]
@@ -26,29 +26,31 @@ Stacktrace:
 
 ¿ù»~°ïÅ|«H®§:
 Traceback (most recent call last):
-  File "c:\Users\«aÞ³\project_THSRC\OOP_version\main.py", line 15, in <module>
+  File "c:\Users\«aÞ³\project_THSRC\OOP_version\main.py", line 19, in <module>
     bot.run()
-  File "c:\Users\«aÞ³\project_THSRC\OOP_version\THSRC_bot\booking.py", line 89, in run
-    self.open_website()
-  File "c:\Users\«aÞ³\project_THSRC\OOP_version\THSRC_bot\booking.py", line 32, in open_website
-    self.driver.get("https://www.thsrc.com.tw/")
-  File "C:\Users\«aÞ³\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 473, in get
-    self.execute(Command.GET, {"url": url})
+  File "c:\Users\«aÞ³\project_THSRC\OOP_version\THSRC_bot\booking.py", line 97, in run
+    self.fill_passenger_info()
+  File "c:\Users\«aÞ³\project_THSRC\OOP_version\THSRC_bot\booking.py", line 68, in fill_passenger_info
+    self.driver.find_element(By.CSS_SELECTOR, "input#idNumber").send_keys(f"{self.id_number}")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\«aÞ³\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 917, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\«aÞ³\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 448, in execute
     self.error_handler.check_response(response)
   File "C:\Users\«aÞ³\AppData\Local\Programs\Python\Python312\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
     raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.InvalidSessionIdException: Message: invalid session id: session deleted as the browser has closed the connection
-from disconnected: not connected to DevTools
-  (Session info: chrome=136.0.7103.115)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"input#idNumber"}
+  (Session info: chrome=136.0.7103.115); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Stacktrace:
 	GetHandleVerifier [0x00007FF6827ACF45+75717]
 	GetHandleVerifier [0x00007FF6827ACFA0+75808]
 	(No symbol) [0x00007FF682578F9A]
-	(No symbol) [0x00007FF682564E35]
-	(No symbol) [0x00007FF682589DB4]
-	(No symbol) [0x00007FF6825FEE75]
-	(No symbol) [0x00007FF68261ECC2]
+	(No symbol) [0x00007FF6825CF4C6]
+	(No symbol) [0x00007FF6825CF77C]
+	(No symbol) [0x00007FF682622577]
+	(No symbol) [0x00007FF6825F73BF]
+	(No symbol) [0x00007FF68261F39C]
 	(No symbol) [0x00007FF6825F7153]
 	(No symbol) [0x00007FF6825C0421]
 	(No symbol) [0x00007FF6825C11B3]

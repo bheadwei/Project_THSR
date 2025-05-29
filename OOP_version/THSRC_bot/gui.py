@@ -1,6 +1,9 @@
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from tkinter import messagebox
+import re
+from datetime import datetime
+from ttkbootstrap.widgets import DateEntry
 
 class PassengerInfoForm:
     def __init__(self):
@@ -59,6 +62,41 @@ class PassengerInfoForm:
         if not all([date, time, id_number]):
             messagebox.showwarning("欄位未填", "請填寫所有欄位！")
             return
+        
+        # === 日期格式驗證 ===
+        try:
+            date_obj = datetime.strptime(date, "%Y/%m/%d")
+            if date_obj.date() < datetime.today().date():
+                messagebox.showerror("日期錯誤", "出發日期不能早於今天！")
+                return
+        except ValueError:
+            messagebox.showerror("格式錯誤", "請輸入正確的日期格式 (YYYY/MM/DD)！")
+            return
+
+        # === 時間格式驗證 ===
+        try:
+            datetime.strptime(time, "%H:%M")
+        except ValueError:
+            messagebox.showerror("格式錯誤", "請輸入正確的時間格式 (HH:MM)！")
+            return
+
+        # === 張數驗證 ===
+        if not amount.isdigit() or int(amount) <= 0:
+            messagebox.showerror("張數錯誤", "請輸入正確的張數（正整數）！")
+            return
+        
+         # === 身分證格式驗證 ===
+        if not re.match(r'^[A-Z][0-9]{9}$', id_number):
+            messagebox.showerror("身分證錯誤", "請輸入正確的身分證格式（1英文字母+9數字）！")
+            return
+        
+
+        # === Email 格式驗證（可選） ===
+        if email and not re.match(r'^[^@]+@[^@]+\.[^@]+$', email):
+            messagebox.showerror("Email格式錯誤", "請輸入正確的電子郵件格式！")
+            return
+
+
 
         self.result = {
             "date": date,
