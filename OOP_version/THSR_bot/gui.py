@@ -3,7 +3,6 @@ from ttkbootstrap.constants import *
 from tkinter import messagebox
 import re
 from datetime import datetime
-from ttkbootstrap.widgets import DateEntry
 
 class PassengerInfoForm:
     def __init__(self):

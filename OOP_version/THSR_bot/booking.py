@@ -9,7 +9,7 @@ import json
 import os
 from datetime import datetime
 
-class THSRCBot:
+class THSRBot:
     def __init__(self,user_data):
         self.driver = create_browser()
         self.ac = ActionChains(self.driver)

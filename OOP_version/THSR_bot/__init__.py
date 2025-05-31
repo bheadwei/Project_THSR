@@ -1,7 +1,7 @@
 # __init__.py
 
 """
-THSRC_Bot_Package
+THSR_Bot_Package
 高鐵訂票的各項功能模組
 """
 
@@ -9,7 +9,7 @@ THSRC_Bot_Package
 from .browser import create_browser
 
 #導入booking主要功能
-from .booking import THSRCBot
+from .booking import THSRBot
 
 #導入識別碼功能
 from .ocr import CaptchaSolver
@@ -19,7 +19,7 @@ from .parser import BookingInfoParser
 
 __all__ = [
     "create_browser",
-    "THSRCBot",
+    "THSRBot",
     "CaptchaSolver",
     "BookingInfoParser",
 ]

@@ -1,5 +1,5 @@
-from THSRC_bot.booking import THSRCBot
-from THSRC_bot.gui import PassengerInfoForm
+from THSR_bot.booking import THSRBot
+from THSR_bot.gui import PassengerInfoForm
 from time import sleep
 import os
 import logging
@@ -15,7 +15,7 @@ if __name__ == "__main__":
         for attempt in range(1, 4):
             logging.info(f"第 {attempt} 次嘗試訂票...")
             try:
-                bot = THSRCBot(user_data)
+                bot = THSRBot(user_data)
                 bot.run()   
                 sleep(5)
                 break
