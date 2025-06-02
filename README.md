@@ -26,7 +26,8 @@
 ### 安裝套件
 
 ```bash
-pip install selenium ddddocr ttkbootstrap
+pip install selenium ddddocr ttkbootstrap | pip install -r requirements.txt
+
 ```
 
 ### 啟動程式
@@ -55,7 +56,8 @@ python main.py
 
 ```
 THSRBot/
-├── main.py                      # 主程式入口，負責錯誤重試與 log 記錄
+├── main.py                     # 主程式入口，負責錯誤重試與 log 記錄
+├── requirements.txt		    # 需安裝套件
 │
 ├── THSR_bot/
 │   ├── booking.py              # 訂票核心流程，包含表單填寫、自動點擊
