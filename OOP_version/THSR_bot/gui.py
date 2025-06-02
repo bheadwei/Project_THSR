@@ -2,11 +2,11 @@ import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 from tkinter import messagebox
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class PassengerInfoForm:
     def __init__(self):
-        self.root = tb.Window(themename="journal")  # 可換成其他主題 like 'superhero', 'darkly', 'cosmo', 'morph'
+        self.root = tb.Window(themename="journal")  
         self.root.title("高鐵訂票乘客資訊")
         self.root.geometry("400x620")
         
@@ -68,6 +68,9 @@ class PassengerInfoForm:
             if date_obj.date() < datetime.today().date():
                 messagebox.showerror("日期錯誤", "出發日期不能早於今天！")
                 return
+            elif date_obj.date() > (datetime.today().date() + timedelta(days=28)):
+                messagebox.showerror("日期錯誤", "請輸入29天內的日期！")
+                return
         except ValueError:
             messagebox.showerror("格式錯誤", "請輸入正確的日期格式 (YYYY/MM/DD)！")
             return
@@ -90,7 +93,7 @@ class PassengerInfoForm:
             return
         
 
-        # === Email 格式驗證（可選） ===
+        # === Email 格式驗證 ===
         if email and not re.match(r'^[^@]+@[^@]+\.[^@]+$', email):
             messagebox.showerror("Email格式錯誤", "請輸入正確的電子郵件格式！")
             return

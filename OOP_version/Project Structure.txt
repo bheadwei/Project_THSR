@@ -1,0 +1,11 @@
+THSRBot/
+├── main.py                      # 主程式入口，負責錯誤重試與 log 記錄
+│
+├── THSR_bot/
+│   ├── booking.py              # 訂票核心流程，包含表單填寫、自動點擊
+│   ├── browser.py              # 瀏覽器啟動與反自動化設定 Selenium WebDriver
+│   ├── gui.py                  # GUI 表單介面（Tkinter + ttkbootstrap）
+│   ├── ocr.py                  # 使用 ddddocr 進行驗證碼辨識
+│   └── parser.py               # 提取並解析最終訂單資訊
+├── orderfolder/                # 儲存成功的訂單 JSON 檔案
+└── errorfolder/                # 儲存錯誤資訊與堆疊紀錄

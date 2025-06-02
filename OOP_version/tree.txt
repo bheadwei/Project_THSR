@@ -1,9 +1,0 @@
-project/
-│
-├── main.py                 # 主程式
-├── thsr_bot/
-│   ├── __init__.py
-│   ├── browser.py          # 初始化 WebDriver
-│   ├── booking.py          # 訂票流程各階段（選站、時間、驗證碼、送出等）
-│   ├── ocr.py              # 驗證碼辨識功能
-│   ├── parser.py           # 資訊抽取與格式化輸出

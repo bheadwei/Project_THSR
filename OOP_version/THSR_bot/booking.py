@@ -14,7 +14,6 @@ class THSRBot:
         self.driver = create_browser()
         self.ac = ActionChains(self.driver)
         self.ocr = CaptchaSolver()
-        
         self.date = user_data["date"]
         self.time = user_data["time"]
         self.amount = user_data["amount"]
@@ -86,6 +85,7 @@ class THSRBot:
         filename = os.path.join(orderfolder, f"訂單編號-{orderID}_{TimeTag}.json")
         with open(filename, "w", encoding="utf-8") as f:
             json.dump(info, f, ensure_ascii=False, indent=4)
+            
     def run(self):
         
         self.open_website()
