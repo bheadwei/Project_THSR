@@ -46,7 +46,7 @@ handler = WebhookHandler(config['YOUR_CHANNEL_SECRET'])
 
 # 貼上 ngrok 提供的網址
 # 參考連結: https://i.imgur.com/V13yTIG.png
-prefix_url = "https://bd89-1-160-14-119.ngrok-free.app "
+prefix_url = " "
 
 
 
