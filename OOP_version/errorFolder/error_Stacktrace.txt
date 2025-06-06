@@ -1,0 +1,11 @@
+錯誤發生，重新執行!
+錯誤訊息: 'amount'
+錯誤堆疊信息:
+Traceback (most recent call last):
+  File "C:\Users\student\Project_THSR\OOP_version\app.py", line 128, in handle_text_message
+    bot = THSRBot(user_data)
+          ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\student\Project_THSR\OOP_version\THSR_bot\booking.py", line 19, in __init__
+    self.amount = user_data["amount"]
+                  ~~~~~~~~~^^^^^^^^^^
+KeyError: 'amount'
